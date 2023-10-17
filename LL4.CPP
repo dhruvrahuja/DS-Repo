@@ -1,104 +1,49 @@
 #include<iostream>
 using namespace std;
-class node {
-public:
+class node{
+    public:
     int data;
-    node* prev;
     node* next;
-    node(int d) {
-        this->data = d;
-        this->prev = NULL;
-        this->next = NULL;
+    node(int data)
+    {
+        this->data=data;
+        this->next=NULL;
     }
     ~node() {
-        int lol = this->data;
-        cout << "memory freed for " << lol << endl;
+        int value = this -> data;
+        cout << " memory is free for node with data " << value << endl;
     }
 };
-void print(node* head) {
-    node* temp = head;
-    while (temp != NULL) {
-        cout << temp->data << " ";
-        temp = temp->next;
-    }
-    cout << endl;
+void inserthead(node*&head,int d)
+{
+    node*temp=new node(d);
+    temp->next=head;
+    head=temp;
 }
-int length(node* head) {
-    int count = 0;
-    node* temp = head;
-    while (temp != NULL) {
-        temp = temp->next;
-        count++;
-    }
-    return count;
+void inserttail(node*&tail,int d)
+{
+    node*temp=new node(d);
+    tail->next=temp;
+    tail=tail->next;//tail=temp
 }
-void inserthead(node*& head, int d) {
-    node* temp = new node(d);
-    temp->next = head;
-    if (head != NULL) {
-        head->prev = temp;
-    }
-    head = temp;
+void deletehead(node*&head)
+{
+    node*temp=head;
+    head=head->next;
+    delete temp;
 }
-void inserttail(node*& tail, int d) {
-    node* temp = new node(d);
-    if (tail != NULL) {
-        tail->next = temp;
-        temp->prev = tail;
+void deletetail(node*&head,node*&tail)
+{
+    node*temp=head;
+    node*prev=NULL;
+    while(temp->next!=NULL)
+    {
+        prev=temp;
+        temp=temp->next;
     }
-    tail = temp;
-}
-void insertmid(node*& head, int position, int d, node*& tail) {
-    if (position == 1) {
-        inserthead(head, d);
-        return;
-    }
-    node* temp = head;
-    node* ans = new node(d);
-    int count = 1;
-    while (count <= position - 2) {
-        temp = temp->next;
-        count++;
-    }
-    if (temp->next == NULL) {
-        inserttail(tail, d);
-        return;
-    }
-    ans->next = temp->next;
-    ans->prev = temp;
-    (temp->next)->prev = ans;
-    temp->next = ans;
-}
-void deletenode(node*& head, int position, node*& tail) {
-    node* temp = head;
-    if (position == 1) {
-        head = head->next;
-        if (head != NULL) {
-            head->prev = NULL;
-        }
-        delete temp;
-        return;
-    }
-    node* curr = head;
-    node* prev = NULL;
-    int count = 1;
-    while (count < position) {
-        prev = curr;
-        curr = curr->next;
-        count++;
-    }
-    if (curr->next == NULL) {
-        tail = prev;
-        prev->next = NULL;
-        curr->prev = NULL;
-        delete curr;
-        return;
-    }
-    prev->next = curr->next;
-    (curr->next)->prev = prev;
-    curr->next = NULL;
-    curr->prev = NULL;
-    delete curr;
+    tail=prev;
+    prev->next=NULL;
+    delete temp;
 }
 node* sortTwoLists(node* first, node* second) {
     node* third = new node(-1);
