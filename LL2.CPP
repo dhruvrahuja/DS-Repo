@@ -45,9 +45,9 @@ void deletetail(node*&head,node*&tail)
     prev->next=NULL;
     delete temp;
 }
-node* findMiddle(node* head) {
+int findMiddle(node* head) {
     if (head == NULL || head->next == NULL) {
-        return head;
+        return head->data;
     }
 
     node* slow = head;
@@ -58,11 +58,15 @@ node* findMiddle(node* head) {
         fast = fast->next->next;
     }
 
-    return slow;
+    return slow->data;
 }
 int main()
 {
     node* node1= new node(10);
     node*head=node1;
     node*tail=node1;
+    inserthead(head,5);
+    inserthead(head,5);
+    inserttail(tail,5);
+    cout<<findMiddle(head);
 }
