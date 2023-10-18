@@ -1,6 +1,7 @@
 //8. First negative integer in every window of size k
 
 #include <iostream>
+#include<vector>
 using namespace std;
 
 int neg(vector<int> v, int start, int k){
