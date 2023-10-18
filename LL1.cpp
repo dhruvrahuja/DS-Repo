@@ -11,7 +11,7 @@ class node{
     }
     ~node() {
         int value = this -> data;
-        cout << " memory is free for node with data " << value << endl;
+        cout << " memory is freed for node with data " << value << endl;
     }
 };
 void inserthead(node*&head,int d)
@@ -45,9 +45,26 @@ void deletetail(node*&head,node*&tail)
     prev->next=NULL;
     delete temp;
 }
+void print(node *&head)//traversing a linked list
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;    
+}
 int main()
 {
     node* node1= new node(10);
     node*head=node1;
     node*tail=node1;
+    inserthead(head,5);
+    inserthead(head,5);
+    inserttail(tail,5);
+    print(head);
+    deletehead(head);
+    deletetail(head,tail);
+    print(head);
 }
