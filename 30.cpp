@@ -1,4 +1,3 @@
-
 #include<iostream>
 using namespace std;
 class node
@@ -42,7 +41,7 @@ class stack
             top=top->next;
             delete temp;
         }
-        int TOPS()
+        int TOP()
         {
             if(isempty())
             {
@@ -62,5 +61,12 @@ int main()
     s1.push(3);
     s1.push(4);
     s1.pop();
-    cout<<s1.TOPS();
+    cout<<"element at top is "<<s1.TOP()<<endl;
+    if(s1.isempty())
+    {
+        cout<<"stack is empty ";
+    }
+    else{
+        cout<<"Stack is not empty ";
+    }
 }

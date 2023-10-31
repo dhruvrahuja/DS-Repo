@@ -43,7 +43,7 @@ class queue
                 cout<<"empty queue";
                 return;
             }
-            cout<<arr[front];
+            cout<<"element at front is "<<arr[front];
         }
         bool isempty()
         {
@@ -60,8 +60,6 @@ int main()
     q.push(5);
     q.push(4);
     q.push(3);
-    q.pop();
-    q.pop();
     q.pop();
     q.peek();
 }

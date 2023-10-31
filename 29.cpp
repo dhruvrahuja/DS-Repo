@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-int n=5;
+int n=100;
 class stack
 {
     int*arr;
@@ -50,6 +50,16 @@ int main()
 {
     stack st;
     st.push(1);
+    st.push(2);
+    st.push(3);
     st.pop();
-    st.pop();
+    cout<<"element at top is "<<st.attop()<<endl;
+    if(st.isempty())
+    {
+        cout<<"stack empty "<<endl;
+    }
+    else
+    {
+        cout<<"stack is not empty "<<endl;
+    }
 }
