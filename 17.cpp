@@ -14,23 +14,11 @@ class node{
         cout << "memory is released for node with data " << value << endl;
     }
 };
-void inserthead(node*&head,int d)
-{
-    node*temp=new node(d);
-    temp->next=head;
-    head=temp;
-}
 void inserttail(node*&tail,int d)
 {
     node*temp=new node(d);
     tail->next=temp;
-    tail=tail->next;//tail=temp
-}
-void deletehead(node*&head)
-{
-    node*temp=head;
-    head=head->next;
-    delete temp;
+    tail=tail->next;
 }
 void deletetail(node*&head,node*&tail)
 {
@@ -60,11 +48,11 @@ int main()
     node* node1= new node(10);
     node*head=node1;
     node*tail=node1;
-    inserthead(head,5);
-    inserthead(head,5);
+    print(head);
     inserttail(tail,5);
     print(head);
-    deletehead(head);
+    inserttail(tail,6);
+    print(head);
     deletetail(head,tail);
     print(head);
 }
