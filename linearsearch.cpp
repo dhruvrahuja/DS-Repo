@@ -1,25 +1,26 @@
 #include<iostream>
 using namespace std;
-bool search(int arr[],int len,int element)
+int search(int arr[],int len,int element)
 {
     for(int i=0;i<len;i++)
     {
         if(arr[i]==element)
         {
-            return true;
+            return i;
         }
     }
-    return false; 
+    return -1; 
 }
 int main()
 {
     int arr[5]={1,2,3,4,5};
-    if(search(arr,5,2))
-    {
-        cout<<"element found";
-    }
-    else
-    {
-        cout<<"not found";
+    int result=search(arr,5,3);
+    switch(result){
+        case -1:
+            cout<<"element not found"<<endl;
+            break;
+        default:
+            cout<<"element found at index "<<result;
+            break;
     }
 }
