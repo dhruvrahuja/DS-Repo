@@ -29,5 +29,13 @@ int main()
     int arr1[5]={1,2,3,4,5};
     cout<<"enter element ";
     cin>>key;
-    cout<<"index of "<<key<<" is "<<binarysearch(arr1,5,key)<<endl;
+        int result=binarysearch(arr1,5,key);
+    switch(result){
+        case -1:
+            cout<<"element not found"<<endl;
+            break;
+        default:
+            cout<<"element found at index "<<result;
+            break;
+    }
 }
