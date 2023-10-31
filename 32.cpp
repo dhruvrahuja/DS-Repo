@@ -67,7 +67,6 @@ int main() {
     queue.dequeue();
     cout << "Front element after dequeue: " << queue.peek() << endl;
     queue.dequeue();
-    queue.dequeue();
     if (queue.isEmpty()) {
         cout << "Queue is empty.\n";
     } else {
