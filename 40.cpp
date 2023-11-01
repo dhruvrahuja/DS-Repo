@@ -1,5 +1,3 @@
-//2. Nse, nge, next greater to right, next greater to left, nearest smaller to left, next smaller to right
-
 #include <iostream>
 using namespace std;
 
