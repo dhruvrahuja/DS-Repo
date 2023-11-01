@@ -75,7 +75,19 @@ void print(node *&head)//traversing a linked list
     }
     cout<<endl;    
 }
-void middlell(node*head)
+void reverse(node*&head)
+{
+    if(head->next==NULL||head==NULL)
+    {
+        return;
+    }
+    node*temp=head->next;
+    reverse(temp);
+    head->next->next=head;
+    head->next=NULL;
+    head=temp;
+}
+node* middlell(node*head)
 {
     node*slow=head;
     node*fast=head;
@@ -83,14 +95,32 @@ void middlell(node*head)
         slow = slow->next;
         fast = fast->next->next;
     }
-    cout<<"middle of linked list is "<<slow->data;
+    return slow;
 }
 int main()
 {
-    node* node1= new node(10);
+    node* node1= new node(1);
     node*head=node1;
-    insert(head,2,3);
-    insert(head,3,4);
+    insert(head,2,2);
+    insert(head,3,3);
+    insert(head,4,2);
+    insert(head,5,1);
     print(head);
-    middlell(head);
+    node*middle=middlell(head);
+    node*head2=middle->next;
+    middle->next=NULL;
+    reverse(head2);
+    node*temp1=head;
+    node*temp2=head2;
+    while(temp1!=NULL&&temp2!=NULL)
+    {
+        if(temp1->data!=temp2->data)
+        {
+            cout<<"not a palindrome ";
+            exit(0);
+        }
+        temp1=temp1->next;
+        temp2=temp2->next;
+    }
+    cout<<"its a palindrome ";
 }
