@@ -41,9 +41,25 @@ int calculateHeight(node* root)
 
     return 1 + max(leftHeight, rightHeight);
 }
+int diameter(node* root) {
+    if (root == NULL) {
+        return 0;
+    }
+
+    int leftHeight = calculateHeight(root->left);
+    int rightHeight = calculateHeight(root->right);
+
+    int currentDiameter = leftHeight + rightHeight + 2; // Diameter passing through current node
+
+    int leftDiameter = diameter(root->left);
+    int rightDiameter = diameter(root->right);
+
+    return max(currentDiameter, max(leftDiameter, rightDiameter));
+}
 int main()
 {
     node* root=NULL;
     root=buildtree(root);
-    cout<<calculateHeight(root);
+    cout<<"height is "<<calculateHeight(root)<<endl;
+    cout<<"diameter is "<<diameter(root);
 }
