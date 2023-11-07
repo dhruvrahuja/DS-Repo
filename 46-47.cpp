@@ -49,7 +49,7 @@ int diameter(node* root) {
     int leftHeight = calculateHeight(root->left);
     int rightHeight = calculateHeight(root->right);
 
-    int currentDiameter = leftHeight + rightHeight + 2; // Diameter passing through current node
+    int currentDiameter = leftHeight + rightHeight + 1; // Diameter passing through current node
 
     int leftDiameter = diameter(root->left);
     int rightDiameter = diameter(root->right);
